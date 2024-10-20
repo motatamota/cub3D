@@ -35,7 +35,8 @@ SRC = ft_memset.c\
 		ft_putstr_fd.c\
 		ft_putendl_fd.c\
 		ft_putnbr_fd.c\
-		ft_striteri.c
+		ft_striteri.c\
+		ft_strcmp.c
 OBJ = $(SRC:%.c=%.o)
 BONUSDIR = .
 BONUS = ft_lstnew.c\
