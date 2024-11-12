@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-void	push_ESC(t_cub3d *viw)
+void	push_esc(t_cub3d *viw)
 {
 	mlx_destroy_window(viw->mlx, viw->win);
 	exit(0);
@@ -23,8 +23,6 @@ int	breakwin(void)
 	exit(0);
 	return (1);
 }
-
-
 
 void	cub3d(t_cub3d *viw, char *path)
 {

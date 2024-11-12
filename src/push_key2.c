@@ -1,13 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_key2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/12 22:02:35 by tashiget          #+#    #+#             */
+/*   Updated: 2024/11/12 22:02:35 by tashiget         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
-void	push_R(t_cub3d *viw)
+void	push_r(t_cub3d *viw)
 {
 	(void)viw;
-
 }
 
-void	push_L(t_cub3d *viw)
+void	push_l(t_cub3d *viw)
 {
 	(void)viw;
-
 }

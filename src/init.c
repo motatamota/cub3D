@@ -73,7 +73,8 @@ void	init_fromfile(t_cub3d *viw, char *path)
 		str = get_next_line(file);
 	}
 	close(file);
-	if (!is_xpm(viw->north.path) || !is_xpm(viw->south.path) || !is_xpm(viw->east.path) || !is_xpm(viw->west.path))
+	if (!is_xpm(viw->north.path) || !is_xpm(viw->south.path)
+		|| !is_xpm(viw->east.path) || !is_xpm(viw->west.path))
 	{
 		printf("Error: worng img filepath\n");
 		exit(1);
@@ -83,9 +84,13 @@ void	init_fromfile(t_cub3d *viw, char *path)
 void	initialimg(t_cub3d *viw, char *path)
 {
 	init_fromfile(viw, path);
-	viw->north.img = mlx_xpm_file_to_image(viw->mlx, viw->north.path, &viw->north.height, &viw->north.width);
-	viw->south.img = mlx_xpm_file_to_image(viw->mlx, viw->south.path, &viw->south.height, &viw->south.width);
-	viw->east.img = mlx_xpm_file_to_image(viw->mlx, viw->east.path, &viw->east.height, &viw->east.width);
-	viw->west.img = mlx_xpm_file_to_image(viw->mlx, viw->west.path, &viw->west.height, &viw->west.width);
+	viw->north.img = mlx_xpm_file_to_image(viw->mlx,
+			viw->north.path, &viw->north.height, &viw->north.width);
+	viw->south.img = mlx_xpm_file_to_image(viw->mlx,
+			viw->south.path, &viw->south.height, &viw->south.width);
+	viw->east.img = mlx_xpm_file_to_image(viw->mlx,
+			viw->east.path, &viw->east.height, &viw->east.width);
+	viw->west.img = mlx_xpm_file_to_image(viw->mlx,
+			viw->west.path, &viw->west.height, &viw->west.width);
 	mlx_put_image_to_window(viw->mlx, viw->win, viw->img->img, 50, 100);
 }

@@ -22,7 +22,7 @@
 # include "libft.h"
 
 # define PLAYER_ANGLE_SPEED 1
-# define PlAYER_MOVE_SPEED 1
+# define PLAYER_MOVE_SPEED 1
 # define FOV 90 //視野角
 # define X_SIZE 900
 # define Y_SIZE 1600
@@ -53,9 +53,9 @@ typedef struct s_img
 
 typedef struct s_rgb
 {
-	int red;
-	int green;
-	int blue;
+	int	red;
+	int	green;
+	int	blue;
 }	t_rgb;
 typedef struct s_cub3d
 {
@@ -73,15 +73,15 @@ typedef struct s_cub3d
 int		isargcerror(int ac);
 int		isfilenameerror(char **av);
 int		isfileopenerror(char **av);
-int 	keymove(int keycode, t_cub3d *viw);
+int		keymove(int keycode, t_cub3d *viw);
 void	cub3d(t_cub3d *viw, char *path);
-void	push_W(t_cub3d *viw);
-void	push_A(t_cub3d *viw);
-void	push_S(t_cub3d *viw);
-void	push_D(t_cub3d *viw);
-void	push_R(t_cub3d *viw);
-void	push_L(t_cub3d *viw);
-void	push_ESC(t_cub3d *viw);
+void	push_w(t_cub3d *viw);
+void	push_a(t_cub3d *viw);
+void	push_s(t_cub3d *viw);
+void	push_d(t_cub3d *viw);
+void	push_r(t_cub3d *viw);
+void	push_l(t_cub3d *viw);
+void	push_esc(t_cub3d *viw);
 void	init_fromfile(t_cub3d *viw, char *path);
 void	initialimg(t_cub3d *viw, char *path);
 void	check_rgb(char *str);
