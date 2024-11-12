@@ -1,8 +1,8 @@
-NAME = cub3d
+NAME = cub3D
 LIB = libft/libft.a
 FLAG = -Wall -Wextra -Werror
-SRC = src/*.c
-OBJ = $(SRC:.c=.o)
+SRC = $(wildcard src/*.c)
+OBJ = $(SRC:%.c=%.o)
 INCLUDE = includes
 CC = gcc
 XFLAG = -lmlx_Linux -lXext -lX11 -lm
@@ -15,8 +15,8 @@ $(NAME): $(OBJ) $(LIB)
 $(LIB):
 	make -C libft
 
-src/%.o: src/%.c $(LIB)
-	$(CC) $(FLAG) -I $(INCLUDE) -c $< -o $@ $(XFLAG)
+src/%.o: src/%.c
+	$(CC) $(FLAG) -I $(INCLUDE) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)

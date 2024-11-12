@@ -21,6 +21,21 @@ int	isargumentserror(int ac, char **av)
 
 int	main(int ac, char **av)
 {
-	if (isargumentserror(ac, av))
-		return (1);
+	t_cub3d		viw;
+	t_data		img;
+
+	(void)ac;
+	(void)av;
+	// if (isargumentserror(ac, av))
+	// 	return (1);
+	viw.mlx = mlx_init();
+	viw.win = mlx_new_window(viw.mlx, Y_SIZE, X_SIZE, "cub3D");
+	img.img = mlx_new_image(viw.mlx, Y_SIZE, X_SIZE);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
+			&img.line_length, &img.endian);
+	viw.img = &img;
+	cub3d(&viw);
+	mlx_put_image_to_window(viw.mlx, viw.win, img.img, 0, 0);
+	mlx_loop(viw.mlx);
+	return (0);
 }
