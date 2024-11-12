@@ -86,11 +86,14 @@ void	initialimg(t_cub3d *viw, char *path)
 	init_fromfile(viw, path);
 	viw->north.img = mlx_xpm_file_to_image(viw->mlx,
 			viw->north.path, &viw->north.height, &viw->north.width);
+	viw->north.addr = mlx_get_data_addr(viw->north.img, &viw->north.bits_per_pixel, &viw->north.line_length, &viw->north.endian);
 	viw->south.img = mlx_xpm_file_to_image(viw->mlx,
 			viw->south.path, &viw->south.height, &viw->south.width);
+	viw->south.addr = mlx_get_data_addr(viw->south.img, &viw->south.bits_per_pixel, &viw->south.line_length, &viw->south.endian);
 	viw->east.img = mlx_xpm_file_to_image(viw->mlx,
 			viw->east.path, &viw->east.height, &viw->east.width);
+	viw->east.addr = mlx_get_data_addr(viw->east.img, &viw->east.bits_per_pixel, &viw->east.line_length, &viw->east.endian);
 	viw->west.img = mlx_xpm_file_to_image(viw->mlx,
 			viw->west.path, &viw->west.height, &viw->west.width);
-	mlx_put_image_to_window(viw->mlx, viw->win, viw->img->img, 50, 100);
+	viw->west.addr = mlx_get_data_addr(viw->west.img, &viw->west.bits_per_pixel, &viw->west.line_length, &viw->west.endian);
 }

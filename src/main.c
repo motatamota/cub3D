@@ -43,7 +43,6 @@ int	main(int ac, char **av)
 			&img.line_length, &img.endian);
 	viw.img = &img;
 	cub3d(&viw, *(av + 1));
-	mlx_put_image_to_window(viw.mlx, viw.win, img.img, 0, 0);
 	mlx_loop(viw.mlx);
 	return (0);
 }

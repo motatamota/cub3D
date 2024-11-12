@@ -34,21 +34,16 @@
 # define KEY_L 65361
 # define KEY_ESC 65307
 
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}	t_data;
-
 typedef struct s_img
 {
 	void	*img;
 	char	*path;
 	int		width;
 	int		height;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 }	t_img;
 
 typedef struct s_rgb
@@ -57,6 +52,7 @@ typedef struct s_rgb
 	int	green;
 	int	blue;
 }	t_rgb;
+
 typedef struct s_cub3d
 {
 	void	*mlx;
@@ -67,7 +63,6 @@ typedef struct s_cub3d
 	t_img	west;
 	t_rgb	floor;
 	t_rgb	ceiling;
-	t_data	*img;
 }	t_cub3d;
 
 int		isargcerror(int ac);
