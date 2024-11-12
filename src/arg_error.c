@@ -6,7 +6,7 @@
 /*   By: tashiget <tashiget@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/20 19:01:05 by tashiget          #+#    #+#             */
-/*   Updated: 2024/10/20 19:01:05 by tashiget         ###   ########.fr       */
+/*   Updated: 2024/11/12 21:25:50 by tashiget         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,29 @@ int	isfileopenerror(char **av)
 	}
 	close(fd);
 	return (0);
+}
+
+void	check_rgb(char *str)
+{
+	int	n;
+	int	c;
+
+	n = 0;
+	c = 0;
+	while (*(str + n) && *(str + n) != '\n')
+	{
+		if ((*(str + n) < '0' || *(str + n) > '9') && *(str + n) != ',')
+		{
+			printf("Error: wrong rgb in file.(1)\n");
+			exit(1);
+		}
+		if (*(str + n) == ',')
+			c++;
+		n++;
+	}
+	if (c != 2)
+	{
+		printf("Error: wrong rgb in file.(2)\n");
+		exit(1);
+	}
 }
