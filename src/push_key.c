@@ -15,19 +15,19 @@
 int	keymove(int keycode, t_cub3d *viw)
 {
 	if (keycode == KEY_W)
-		push_W(viw);
+		push_w(viw);
 	else if (keycode == KEY_A)
-		push_A(viw);
+		push_a(viw);
 	else if (keycode == KEY_S)
-		push_S(viw);
+		push_s(viw);
 	else if (keycode == KEY_D)
-		push_D(viw);
+		push_d(viw);
 	else if (keycode == KEY_L)
-		push_L(viw);
+		push_l(viw);
 	else if (keycode == KEY_R)
-		push_R(viw);
+		push_r(viw);
 	else if (keycode == KEY_ESC)
-		push_ESC(viw);
+		push_esc(viw);
 	return (0);
 }
 
