@@ -53,10 +53,30 @@ typedef struct s_rgb
 	int	blue;
 }	t_rgb;
 
+typedef struct s_man
+{
+	double		pos_x;
+	double		pos_y;
+	double		angle_v;
+	double		angle_h;
+	t_vector	vect;
+}	t_man;
+
+typedef struct s_vector
+{
+	double	direction_x;
+	double	direction_y;
+	double	direction_z;
+}	t_vector;
 typedef struct s_cub3d
 {
 	void	*mlx;
 	void	*win;
+	int		frame_height;
+	int		frame_width;
+	double	fov;
+	double	const_fov;
+	t_man	man;
 	t_img	north;
 	t_img	south;
 	t_img	east;
