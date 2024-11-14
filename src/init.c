@@ -86,6 +86,7 @@ void	initialimg(t_cub3d *viw, char *path)
 	init_fromfile(viw, path);
 	viw->north.img = mlx_xpm_file_to_image(viw->mlx,
 			viw->north.path, &viw->north.height, &viw->north.width);
+			printf("%d, %dtest\n", viw->north.height, viw->north.width);
 	viw->north.addr = mlx_get_data_addr(viw->north.img, &viw->north.bits_per_pixel, &viw->north.line_length, &viw->north.endian);
 	viw->south.img = mlx_xpm_file_to_image(viw->mlx,
 			viw->south.path, &viw->south.height, &viw->south.width);

@@ -12,14 +12,25 @@
 
 #include "cub3d.h"
 
-long	g_color_s_w(t_cub3d *viw, t_man ray)
+void	d_tuning(t_man *ray, int flag)
+{
+	if (flag == 2 || flag == 3)
+	{
+		ray->pos_x += 0.05 * sin(ray->angle_h);
+		ray->pos_y += 0.05 * cos(ray->angle_h);
+		ray->pos_z += 0.05 * sin(ray->angle_v);
+	}
+}
+
+int	g_color_s_w(t_cub3d *viw, t_man ray)
 {
 	int		flag;
-	long	color;
+	int	color;
 
 	flag = 1;
 	while (flag)
 	{
+		d_tuning(&ray, flag);
 		if (ray.pos_x + (ray.pos_y - (int)ray.pos_y - 1) * ray.htan <= (int)ray.pos_x)
 		{
 			ray.pos_y = ray.pos_y - ((int)(ray.pos_x) - ray.pos_x) / ray.htan;
@@ -38,14 +49,15 @@ long	g_color_s_w(t_cub3d *viw, t_man ray)
 	return (color);
 }
 
-long	g_color_w_s(t_cub3d *viw, t_man ray)
+int	g_color_w_s(t_cub3d *viw, t_man ray)
 {
 	int		flag;
-	long	color;
+	int	color;
 
 	flag = 1;
 	while (flag)
 	{
+		d_tuning(&ray, flag);
 		if (ray.pos_y - ((int)ray.pos_x - ray.pos_x) / ray.htan >= (int)ray.pos_y + 1)
 		{
 			ray.pos_x = ray.pos_x + (ray.pos_y - (int)ray.pos_y - 1) * ray.htan;
@@ -64,14 +76,15 @@ long	g_color_w_s(t_cub3d *viw, t_man ray)
 	return (color);
 }
 
-long	g_color_w_n(t_cub3d *viw, t_man ray)
+int	g_color_w_n(t_cub3d *viw, t_man ray)
 {
 	int		flag;
-	long	color;
+	int	color;
 
 	flag = 1;
 	while (flag)
 	{
+		d_tuning(&ray, flag);
 		if (ray.pos_y - ((int)ray.pos_x - ray.pos_x) / ray.htan <= (int)ray.pos_y)
 		{
 			ray.pos_x = ray.pos_x + (ray.pos_y - (int)ray.pos_y) * ray.htan;
@@ -90,14 +103,15 @@ long	g_color_w_n(t_cub3d *viw, t_man ray)
 	return (color);
 }
 
-long	g_color_n_w(t_cub3d *viw, t_man ray)
+int	g_color_n_w(t_cub3d *viw, t_man ray)
 {
-	int		flag;
-	long	color;
+	int	flag;
+	int	color;
 
 	flag = 1;
 	while (flag)
 	{
+		d_tuning(&ray, flag);
 		if (ray.pos_x + (ray.pos_y - (int)ray.pos_y) * ray.htan <= (int)ray.pos_x)
 		{
 			ray.pos_y = ray.pos_y - ((int)(ray.pos_x) - ray.pos_x) / ray.htan;

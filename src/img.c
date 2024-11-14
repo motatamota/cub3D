@@ -13,7 +13,7 @@
 #include "cub3d.h"
 
 //x_pos,y_poxから画像を取得。tmpは向き。
-long	yy_img(t_cub3d *viw, t_man ray, int tmp)
+int	yy_img(t_cub3d *viw, t_man ray, int tmp)
 {
 	int	x;
 	int	y;
@@ -22,36 +22,38 @@ long	yy_img(t_cub3d *viw, t_man ray, int tmp)
 	{
 		x = viw->west.width * (1 - (ray.pos_y - (int)ray.pos_y));
 		y = viw->west.height * ray.pos_z;
-		return (get_pixel_color(viw->west.img, x, y));
+		return (get_pixel_color(&viw->west, x, y));
 	}
 	else
 	{
-		x = viw->west.width * (ray.pos_y - (int)ray.pos_y);
-		y = viw->west.height * ray.pos_z;
-		return (get_pixel_color(viw->east.img, x, y));
+		x = viw->east.width * (ray.pos_y - (int)ray.pos_y);
+		y = viw->east.height * ray.pos_z;
+		return (get_pixel_color(&viw->east, x, y));
 	}
 }
 
-long	xx_img(t_cub3d *viw, t_man ray, int tmp)
+int	xx_img(t_cub3d *viw, t_man ray, int tmp)
 {
 	int	x;
 	int	y;
 
 	if (tmp)
 	{
-		x = viw->west.width * (ray.pos_y - (int)ray.pos_y);
-		y = viw->west.height * ray.pos_z;
-		return (get_pixel_color(viw->east.img, x, y));
+		x = viw->north.width * (ray.pos_x - (int)ray.pos_x);
+		y = viw->north.height * ray.pos_z;
+		// printf("%d, %d\n", x, y);
+		// printf("%d, %d\n", viw->north.width, viw->north.height);
+		return (get_pixel_color(&viw->north, x, y));
 	}
 	else
 	{
-		x = viw->west.width * (1 - (ray.pos_y - (int)ray.pos_y));
-		y = viw->west.height * ray.pos_z;
-		return (get_pixel_color(viw->east.img, x, y));
+		x = viw->south.width * (1 - (ray.pos_x - (int)ray.pos_x));
+		y = viw->south.height * ray.pos_z;
+		return (get_pixel_color(&viw->south, x, y));
 	}
 }
 
-int	y_img(t_cub3d *viw, t_man ray, int tmp, long *color)
+int	y_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 {
 	if (ray.pos_z <= 0)
 	{
@@ -68,10 +70,10 @@ int	y_img(t_cub3d *viw, t_man ray, int tmp, long *color)
 		*color = yy_img(viw, ray, tmp);
 		return (0);
 	}
-	return (1);
+	return (3);
 }
 
-int	x_img(t_cub3d *viw, t_man ray, int tmp, long *color)
+int	x_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 {
 	if (ray.pos_z <= 0)
 	{
@@ -88,5 +90,5 @@ int	x_img(t_cub3d *viw, t_man ray, int tmp, long *color)
 		*color = xx_img(viw, ray, tmp);
 		return (0);
 	}
-	return (1);
+	return (2);
 }

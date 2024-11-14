@@ -25,8 +25,8 @@
 # define PLAYER_ANGLE_SPEED 20
 # define PLAYER_MOVE_SPEED 0.1
 # define FOV 90 //視野角
-# define X_SIZE 900
-# define Y_SIZE 1600
+# define X_SIZE 1600
+# define Y_SIZE 900
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -117,14 +117,15 @@ void	init_fromfile(t_cub3d *viw, char *path);
 void	initialimg(t_cub3d *viw, char *path);
 void	check_rgb(char *str);
 void	format_gnl(char *str);
-long	get_pixel_color(t_img *img, int x, int y);
+int		get_pixel_color(t_img *img, int x, int y);
 void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
-long	monitor_pixelcolor(t_cub3d *viw, int x, int y);
-long	g_color(t_cub3d *viw, t_man ray);
-long	g_color_s_w(t_cub3d *viw, t_man ray);
-long	g_color_w_s(t_cub3d *viw, t_man ray);
-long	g_color_w_n(t_cub3d *viw, t_man ray);
-long	g_color_n_w(t_cub3d *viw, t_man ray);
-int	y_img(t_cub3d *viw, t_man ray, int tmp, long *color);
-int	x_img(t_cub3d *viw, t_man ray, int tmp, long *color);
+int		monitor_pixelcolor(t_cub3d *viw, int x, int y);
+int		g_color(t_cub3d *viw, t_man ray);
+int		g_color_s_w(t_cub3d *viw, t_man ray);
+int		g_color_w_s(t_cub3d *viw, t_man ray);
+int		g_color_w_n(t_cub3d *viw, t_man ray);
+int		g_color_n_w(t_cub3d *viw, t_man ray);
+int		y_img(t_cub3d *viw, t_man ray, int tmp, int *color);
+int		x_img(t_cub3d *viw, t_man ray, int tmp, int *color);
+void	d_tuning(t_man *ray, int flag);
 #endif
