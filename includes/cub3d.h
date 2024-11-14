@@ -14,6 +14,7 @@
 # define CUB3D_H
 # include <stdio.h>
 # include <unistd.h>
+# include <math.h>
 // #include <X11/X.h>
 // #include <X11/keysym.h>
 # include <mlx.h>
@@ -21,8 +22,8 @@
 # include "get_next_line.h"
 # include "libft.h"
 
-# define PLAYER_ANGLE_SPEED 1
-# define PLAYER_MOVE_SPEED 1
+# define PLAYER_ANGLE_SPEED 20
+# define PLAYER_MOVE_SPEED 0.1
 # define FOV 90 //視野角
 # define X_SIZE 900
 # define Y_SIZE 1600
@@ -33,6 +34,13 @@
 # define KEY_R 65363
 # define KEY_L 65361
 # define KEY_ESC 65307
+# define MOD_NORTH 0
+# define MOD_EAST 1
+# define MOD_SOUTH 2
+# define MOD_WEST 3
+# define OBJECT 1
+# define EMPTY 2
+# define TALL 0.5
 
 typedef struct s_img
 {
@@ -53,25 +61,32 @@ typedef struct s_rgb
 	int	blue;
 }	t_rgb;
 
-typedef struct s_man
-{
-	double		pos_x;
-	double		pos_y;
-	double		angle_v;
-	double		angle_h;
-	t_vector	vect;
-}	t_man;
-
 typedef struct s_vector
 {
 	double	direction_x;
 	double	direction_y;
 	double	direction_z;
 }	t_vector;
+
+typedef struct s_man
+{
+	double		pos_x;
+	double		pos_y;
+	double		pos_z;
+	double		angle_v;
+	double		angle_h;
+	double		htan;
+	double		vtan;
+	double		hsin;
+	double		hcos;
+	t_vector	vect;
+}	t_man;
+
 typedef struct s_cub3d
 {
 	void	*mlx;
 	void	*win;
+	int		**map;
 	int		frame_height;
 	int		frame_width;
 	double	fov;
@@ -81,6 +96,7 @@ typedef struct s_cub3d
 	t_img	south;
 	t_img	east;
 	t_img	west;
+	t_img	img;
 	t_rgb	floor;
 	t_rgb	ceiling;
 }	t_cub3d;
@@ -101,4 +117,14 @@ void	init_fromfile(t_cub3d *viw, char *path);
 void	initialimg(t_cub3d *viw, char *path);
 void	check_rgb(char *str);
 void	format_gnl(char *str);
+long	get_pixel_color(t_img *img, int x, int y);
+void	my_mlx_pixel_put(t_img *data, int x, int y, int color);
+long	monitor_pixelcolor(t_cub3d *viw, int x, int y);
+long	g_color(t_cub3d *viw, t_man ray);
+long	g_color_s_w(t_cub3d *viw, t_man ray);
+long	g_color_w_s(t_cub3d *viw, t_man ray);
+long	g_color_w_n(t_cub3d *viw, t_man ray);
+long	g_color_n_w(t_cub3d *viw, t_man ray);
+int	y_img(t_cub3d *viw, t_man ray, int tmp, long *color);
+int	x_img(t_cub3d *viw, t_man ray, int tmp, long *color);
 #endif

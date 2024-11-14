@@ -38,9 +38,21 @@ long	get_pixel_color(t_img *img, int x, int y)
 
 void	first_img(t_cub3d *viw)
 {
-	long color;
-	color = get_pixel_color(&viw->north, 50, 50);
-	mlx_put_image_to_window(viw->mlx, viw->win, viw->north.img, 0, 0);
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < viw->frame_height)
+	{
+		y = 0;
+		while (y < viw->frame_width)
+		{
+			my_mlx_pixel_put(&viw->img, x, y, monitor_pixelcolor(viw, x, y));
+			y++;
+		}
+		x++;
+	}
+	mlx_put_image_to_window(viw->mlx, viw->win, viw->img.img, 0, 0);
 }
 
 void	cub3d(t_cub3d *viw, char *path)

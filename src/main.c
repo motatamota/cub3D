@@ -30,7 +30,6 @@ void	format_gnl(char *str)
 int	main(int ac, char **av)
 {
 	t_cub3d		viw;
-	t_data		img;
 
 	(void)ac;
 	(void)av;
@@ -38,10 +37,9 @@ int	main(int ac, char **av)
 		return (1);
 	viw.mlx = mlx_init();
 	viw.win = mlx_new_window(viw.mlx, Y_SIZE, X_SIZE, "cub3D");
-	img.img = mlx_new_image(viw.mlx, Y_SIZE, X_SIZE);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel,
-			&img.line_length, &img.endian);
-	viw.img = &img;
+	viw.img.img = mlx_new_image(viw.mlx, Y_SIZE, X_SIZE);
+	viw.img.addr = mlx_get_data_addr(viw.img.img, &viw.img.bits_per_pixel,
+			&viw.img.line_length, &viw.img.endian);
 	cub3d(&viw, *(av + 1));
 	mlx_loop(viw.mlx);
 	return (0);
