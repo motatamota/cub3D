@@ -41,7 +41,7 @@ void	push_w(t_cub3d *viw)
 	x = viw->man.pos_x + 0.05 * sin(angle);
 	y = viw->man.pos_y - 0.05 * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
-		return;
+		return ;
 	viw->man.pos_x = x;
 	viw->man.pos_y = y;
 	first_img(viw);
@@ -57,7 +57,7 @@ void	push_a(t_cub3d *viw)
 	x = viw->man.pos_x + 0.05 * sin(angle);
 	y = viw->man.pos_y - 0.05 * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
-		return;
+		return ;
 	viw->man.pos_x = x;
 	viw->man.pos_y = y;
 	first_img(viw);
@@ -73,7 +73,7 @@ void	push_s(t_cub3d *viw)
 	x = viw->man.pos_x + 0.05 * sin(angle);
 	y = viw->man.pos_y - 0.05 * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
-		return;
+		return ;
 	viw->man.pos_x = x;
 	viw->man.pos_y = y;
 	first_img(viw);
@@ -89,7 +89,7 @@ void	push_d(t_cub3d *viw)
 	x = viw->man.pos_x + 0.05 * sin(angle);
 	y = viw->man.pos_y - 0.05 * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
-		return;
+		return ;
 	viw->man.pos_x = x;
 	viw->man.pos_y = y;
 	first_img(viw);

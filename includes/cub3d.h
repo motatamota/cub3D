@@ -131,4 +131,12 @@ int		x_img(t_cub3d *viw, t_man ray, int tmp, int *color);
 void	d_tuning(t_man *ray, int flag);
 void	first_img(t_cub3d *viw);
 double	ftoradian(double angle);
+double	util_n_e(t_man ray, int n);
+double	util_e_n(t_man ray, int n);
+double	util_e_s(t_man ray, int n);
+double	util_s_e(t_man ray, int n);
+double	util_s_w(t_man ray, int n);
+double	util_w_s(t_man ray, int n);
+double	util_w_n(t_man ray, int n);
+double	util_n_w(t_man ray, int n);
 #endif

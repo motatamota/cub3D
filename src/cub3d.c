@@ -29,10 +29,11 @@ int	get_pixel_color(t_img *img, int x, int y)
 	int		color;
 
 	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
-		return 0;
-	pixel_addr = img->addr + (y * img->line_length + x * (img->bits_per_pixel / 8));
+		return (0);
+	pixel_addr = img->addr + (y * img->line_length
+			+ x * (img->bits_per_pixel / 8));
 	color = *(unsigned int *)pixel_addr;
-	return color;
+	return (color);
 }
 
 void	first_img(t_cub3d *viw)
@@ -46,12 +47,10 @@ void	first_img(t_cub3d *viw)
 		x = 0;
 		while (x < viw->frame_width)
 		{
-			// printf("%d, %d\n", x, y);
 			my_mlx_pixel_put(&viw->img, x, y, monitor_pixelcolor(viw, x, y));
 			x++;
 		}
 		y++;
-		// printf("%d\n", viw->frame_height);
 	}
 	mlx_put_image_to_window(viw->mlx, viw->win, viw->img.img, 0, 0);
 }

@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	viw.man.pos_x = 3.5;
 	viw.man.pos_y = 3.5;
 	viw.man.pos_z = 0.5;
-	viw.man.angle_h = 150;
+	viw.man.angle_h = 0;
 	viw.frame_height = Y_SIZE;
 	viw.frame_width = X_SIZE;
 	viw.fov = FOV;

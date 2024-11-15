@@ -28,7 +28,6 @@ int	yy_img(t_cub3d *viw, t_man ray, int tmp)
 	{
 		x = viw->east.width * (ray.pos_y - (int)ray.pos_y);
 		y = viw->east.height * ray.pos_z;
-		// printf("%d, %d, %f, %d, %d\n", x, y, ray.pos_y, viw->east.width, viw->east.height);
 		return (get_pixel_color(&viw->east, x, y));
 	}
 }
@@ -42,8 +41,6 @@ int	xx_img(t_cub3d *viw, t_man ray, int tmp)
 	{
 		x = viw->north.width * (ray.pos_x - (int)ray.pos_x);
 		y = viw->north.height * ray.pos_z;
-		// printf("%d, %d\n", x, y);
-		// printf("%d, %d\n", viw->north.width, viw->north.height);
 		return (get_pixel_color(&viw->north, x, y));
 	}
 	else
@@ -58,12 +55,14 @@ int	y_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 {
 	if (ray.pos_z <= 0)
 	{
-		*color = (viw->ceiling.red << 16) | (viw->ceiling.green << 8) | viw->ceiling.blue;
+		*color = (viw->ceiling.red << 16)
+			| (viw->ceiling.green << 8) | viw->ceiling.blue;
 		return (0);
 	}
 	if (ray.pos_z >= 1)
 	{
-		*color = (viw->floor.red << 16) | (viw->floor.green << 8) | viw->floor.blue;
+		*color = (viw->floor.red << 16)
+			| (viw->floor.green << 8) | viw->floor.blue;
 		return (0);
 	}
 	if (viw->map[(int)ray.pos_y][(int)ray.pos_x - tmp] == OBJECT)
@@ -78,18 +77,18 @@ int	x_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 {
 	if (ray.pos_z <= 0)
 	{
-		*color = (viw->ceiling.red << 16) | (viw->ceiling.green << 8) | viw->ceiling.blue;
+		*color = (viw->ceiling.red << 16)
+			| (viw->ceiling.green << 8) | viw->ceiling.blue;
 		return (0);
 	}
 	if (ray.pos_z >= 1)
 	{
-		*color = (viw->floor.red << 16) | (viw->floor.green << 8) | viw->floor.blue;
+		*color = (viw->floor.red << 16)
+			| (viw->floor.green << 8) | viw->floor.blue;
 		return (0);
 	}
-	// printf("%d, %d\n", (int)ray.pos_y - tmp, (int)ray.pos_x);
 	if (viw->map[(int)ray.pos_y - tmp][(int)ray.pos_x] == OBJECT)
 	{
-		// printf("%d, %f, %f\n",viw->map[(int)ray.pos_y - tmp][(int)ray.pos_x], ray.pos_y - tmp, ray.pos_x);
 		*color = xx_img(viw, ray, tmp);
 		return (0);
 	}
