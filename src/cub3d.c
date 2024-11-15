@@ -21,10 +21,9 @@ void	push_esc(t_cub3d *viw)
 int	breakwin(void)
 {
 	exit(0);
-	return (1);
 }
 
-int	get_pixel_color(t_img *img, int y, int x)
+int	get_pixel_color(t_img *img, int x, int y)
 {
 	char	*pixel_addr;
 	int		color;
@@ -41,17 +40,18 @@ void	first_img(t_cub3d *viw)
 	int	x;
 	int	y;
 
-	x = 0;
-	while (x < viw->frame_height)
+	y = 0;
+	while (y < viw->frame_height)
 	{
-		y = 0;
-		while (y < viw->frame_width)
+		x = 0;
+		while (x < viw->frame_width)
 		{
 			// printf("%d, %d\n", x, y);
 			my_mlx_pixel_put(&viw->img, x, y, monitor_pixelcolor(viw, x, y));
-			y++;
+			x++;
 		}
-		x++;
+		y++;
+		// printf("%d\n", viw->frame_height);
 	}
 	mlx_put_image_to_window(viw->mlx, viw->win, viw->img.img, 0, 0);
 }

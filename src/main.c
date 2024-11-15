@@ -31,15 +31,13 @@ int	main(int ac, char **av)
 {
 	int map1[]={1, 1, 1, 1, 1, 1};
 	int	map2[]={1, 0, 0, 0, 0, 1};
-	int map3[]={1, 0, 0, 0, 0, 1};
+	int map3[]={1, 1, 0, 1, 0, 1};
 	int map4[]={1, 0, 0, 0, 0, 1};
-	int map5[]={1, 0, 0, 0, 0, 1};
+	int map5[]={1, 1, 0, 0, 0, 1};
 	int map6[]={1, 1, 1, 1, 1, 1};
 	int *map[]={map1,map2,map3,map4,map5,map6};
 	t_cub3d		viw;
 
-	(void)ac;
-	(void)av;
 	if (isargumentserror(ac, av))
 		return (1);
 	viw.mlx = mlx_init();
@@ -50,9 +48,9 @@ int	main(int ac, char **av)
 	viw.man.pos_x = 3.5;
 	viw.man.pos_y = 3.5;
 	viw.man.pos_z = 0.5;
-	viw.man.angle_h = 0;
-	viw.frame_height = X_SIZE;
-	viw.frame_width = Y_SIZE;
+	viw.man.angle_h = 150;
+	viw.frame_height = Y_SIZE;
+	viw.frame_width = X_SIZE;
 	viw.fov = FOV;
 	viw.map = map;
 	viw.const_fov = (double)viw.fov / 1920 * 1080;

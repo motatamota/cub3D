@@ -79,6 +79,7 @@ typedef struct s_man
 	double		vtan;
 	double		hsin;
 	double		hcos;
+	double		vsin;
 	t_vector	vect;
 }	t_man;
 
@@ -128,4 +129,6 @@ int		g_color_n_w(t_cub3d *viw, t_man ray);
 int		y_img(t_cub3d *viw, t_man ray, int tmp, int *color);
 int		x_img(t_cub3d *viw, t_man ray, int tmp, int *color);
 void	d_tuning(t_man *ray, int flag);
+void	first_img(t_cub3d *viw);
+double	ftoradian(double angle);
 #endif

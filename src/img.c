@@ -28,6 +28,7 @@ int	yy_img(t_cub3d *viw, t_man ray, int tmp)
 	{
 		x = viw->east.width * (ray.pos_y - (int)ray.pos_y);
 		y = viw->east.height * ray.pos_z;
+		// printf("%d, %d, %f, %d, %d\n", x, y, ray.pos_y, viw->east.width, viw->east.height);
 		return (get_pixel_color(&viw->east, x, y));
 	}
 }
@@ -85,8 +86,10 @@ int	x_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 		*color = (viw->floor.red << 16) | (viw->floor.green << 8) | viw->floor.blue;
 		return (0);
 	}
+	// printf("%d, %d\n", (int)ray.pos_y - tmp, (int)ray.pos_x);
 	if (viw->map[(int)ray.pos_y - tmp][(int)ray.pos_x] == OBJECT)
 	{
+		// printf("%d, %f, %f\n",viw->map[(int)ray.pos_y - tmp][(int)ray.pos_x], ray.pos_y - tmp, ray.pos_x);
 		*color = xx_img(viw, ray, tmp);
 		return (0);
 	}

@@ -16,9 +16,9 @@ void	d_tuning(t_man *ray, int flag)
 {
 	if (flag == 2 || flag == 3)
 	{
-		ray->pos_x += 0.05 * sin(ray->angle_h);
-		ray->pos_y += 0.05 * cos(ray->angle_h);
-		ray->pos_z += 0.05 * sin(ray->angle_v);
+		ray->pos_x += 0.00001 * ray->hsin;
+		ray->pos_y -= 0.00001 * ray->hcos;
+		ray->pos_z += 0.00001 * ray->vsin;
 	}
 }
 
@@ -109,6 +109,7 @@ int	g_color_n_w(t_cub3d *viw, t_man ray)
 	int	color;
 
 	flag = 1;
+	// printf("%f, %f, %f\n", ray.htan, ray.vtan, ray.hcos);
 	while (flag)
 	{
 		d_tuning(&ray, flag);

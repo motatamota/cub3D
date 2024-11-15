@@ -14,10 +14,16 @@
 
 void	push_r(t_cub3d *viw)
 {
-	(void)viw;
+	viw->man.angle_h += 5;
+	if (viw->man.angle_h >= 360)
+		viw->man.angle_h -= 360;
+	first_img(viw);
 }
 
 void	push_l(t_cub3d *viw)
 {
-	(void)viw;
+	viw->man.angle_h -= 5;
+	if (viw->man.angle_h < 0)
+		viw->man.angle_h += 360;
+	first_img(viw);
 }

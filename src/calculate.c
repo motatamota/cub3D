@@ -17,6 +17,7 @@ double	calcangle_v(t_cub3d *viw, int y)
 	double	ans;
 
 	ans = ((double)viw->frame_height / 2 - y) * viw->const_fov / viw->frame_height;
+	// printf("%f", ((double)viw->frame_height / 2 - 0) * viw->const_fov / viw->frame_height);
 	if (ans < 0)
 		ans += 360;
 	return (ans);
@@ -27,6 +28,7 @@ double	calcangle_h(t_cub3d *viw, int x)
 	double	ans;
 
 	ans = viw->man.angle_h + (x - (double)viw->frame_width / 2) * viw->const_fov / viw->frame_height;
+	// printf("%f\n", viw->man.angle_h + (1500 - (double)viw->frame_width / 2) * viw->const_fov / viw->frame_height);
 	if (ans < 0)
 		ans += 360;
 	return (ans);
@@ -44,6 +46,11 @@ double	calcangle_h(t_cub3d *viw, int x)
 // 		return (MOD_WEST);
 // }
 
+double	ftoradian(double angle)
+{
+	return (angle / 360 * 2 * M_PI);
+}
+
 int	get_monitor_pixel_color(t_cub3d *viw, double angle_h, double angle_v)
 {
 	t_man	ray_point;
@@ -53,12 +60,21 @@ int	get_monitor_pixel_color(t_cub3d *viw, double angle_h, double angle_v)
 	ray_point.pos_z = viw->man.pos_z;
 	if (angle_h >= 360)
 		angle_h -= 360;
+	angle_h = ftoradian(angle_h);
+	angle_v = ftoradian(angle_v);
 	ray_point.angle_h = angle_h;
 	ray_point.angle_v = angle_v;
+	ray_point.htan = tan(angle_h);
+	ray_point.hcos = cos(angle_h);
+	ray_point.hsin = sin(angle_h);
+	ray_point.vtan = tan(angle_v);
+	ray_point.vsin = sin(angle_v);
+	// printf("%f, %f\n", angle_h, cos(angle_h));
 	return (g_color(viw, ray_point));
 }
 
 int	monitor_pixelcolor(t_cub3d *viw, int x, int y)
 {
+	// printf("%d, %f | %d, %f\n", x, calcangle_h(viw, x), y, calcangle_v(viw, y));
 	return (get_monitor_pixel_color(viw, calcangle_h(viw, x), calcangle_v(viw, y)));
 }

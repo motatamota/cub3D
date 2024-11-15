@@ -1,6 +1,6 @@
 
-F 220,100,0
-C 225,30,0
+F 220,100,10
+C 225,30,10
 NO ./image/north.xpm
 WE ./image/west.xpm
 SO ./image/south.xpm
