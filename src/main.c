@@ -12,6 +12,10 @@
 
 #include "cub3d.h"
 
+//マップファイルの取り込み
+//レイがマップ外に行った時の処理(セグフォになる)
+//ウィンドウサイズ変更時のハンドル
+
 int	isargumentserror(int ac, char **av)
 {
 	if (isargcerror(ac) || isfilenameerror(av) || isfileopenerror(av))
