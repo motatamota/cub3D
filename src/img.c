@@ -51,6 +51,16 @@ int	xx_img(t_cub3d *viw, t_man ray, int tmp)
 	}
 }
 
+int	isexternal(t_cub3d *viw, int y, int x, int *color)
+{
+	if (x >= viw->mapwidth || x < 0 || y >= viw->mapheight || y < 0)
+	{
+		*color = 0;
+		return (1);
+	}
+	return (0);
+}
+
 int	y_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 {
 	if (ray.pos_z <= 0)
@@ -65,6 +75,8 @@ int	y_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 			| (viw->floor.green << 8) | viw->floor.blue;
 		return (0);
 	}
+	if (isexternal(viw, (int)ray.pos_y, (int)ray.pos_x - tmp, color))
+		return (0);
 	if (viw->map[(int)ray.pos_y][(int)ray.pos_x - tmp] == OBJECT)
 	{
 		*color = yy_img(viw, ray, tmp);
@@ -87,6 +99,8 @@ int	x_img(t_cub3d *viw, t_man ray, int tmp, int *color)
 			| (viw->floor.green << 8) | viw->floor.blue;
 		return (0);
 	}
+	if (isexternal(viw, (int)ray.pos_y - tmp, (int)ray.pos_x, color))
+		return (0);
 	if (viw->map[(int)ray.pos_y - tmp][(int)ray.pos_x] == OBJECT)
 	{
 		*color = xx_img(viw, ray, tmp);

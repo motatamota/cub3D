@@ -73,7 +73,8 @@ void	init_fromfile(t_cub3d *viw, char *path)
 		free(str);
 		str = get_next_line(file);
 	}
-	free(str);
+	if (str)
+		free(str);
 	close(file);
 	if (!is_xpm(viw->north.path) || !is_xpm(viw->south.path)
 		|| !is_xpm(viw->east.path) || !is_xpm(viw->west.path))

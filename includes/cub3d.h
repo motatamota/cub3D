@@ -23,7 +23,7 @@
 # include "libft.h"
 
 # define PLAYER_ANGLE_SPEED 20
-# define PLAYER_MOVE_SPEED 0.1
+# define PLAYER_MOVE_SPEED 0.5
 # define FOV 90 //視野角
 # define X_SIZE 1600
 # define Y_SIZE 900
@@ -90,6 +90,8 @@ typedef struct s_cub3d
 	int		**map;
 	int		frame_height;
 	int		frame_width;
+	int		mapwidth;
+	int		mapheight;
 	double	fov;
 	double	const_fov;
 	t_man	man;
@@ -139,4 +141,22 @@ double	util_s_w(t_man ray, int n);
 double	util_w_s(t_man ray, int n);
 double	util_w_n(t_man ray, int n);
 double	util_n_w(t_man ray, int n);
+int		mapcreated(t_cub3d *viw, char *str);
+int		create_map(t_cub3d *viw, char *str);
+int		mapsetbyte(t_cub3d *viw, char *str, int n, int *k);
+int		countmap(t_cub3d *viw, char *fdr);
+char	*skip(int fd);
+void	display_cub3d_contents(t_cub3d *viw);
+int		set_manpos(t_cub3d *viw);
+int		top(t_cub3d *viw);
+int		bot(t_cub3d *viw);
+int		left(t_cub3d *viw);
+int		right(t_cub3d *viw);
+int		ue(t_cub3d *viw, int x, int y);
+int		hidari(t_cub3d *viw, int x, int y);
+int		migi(t_cub3d *viw, int x, int y);
+int		shita(t_cub3d *viw, int x, int y);
+int		mapcheck(t_cub3d *viw);
+int		mapch(t_cub3d *viw);
+int		ch(t_cub3d *viw, int x, int y);
 #endif

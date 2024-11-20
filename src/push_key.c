@@ -38,8 +38,8 @@ void	push_w(t_cub3d *viw)
 	double	angle;
 
 	angle = ftoradian(viw->man.angle_h);
-	x = viw->man.pos_x + 0.05 * sin(angle);
-	y = viw->man.pos_y - 0.05 * cos(angle);
+	x = viw->man.pos_x + PLAYER_MOVE_SPEED * sin(angle);
+	y = viw->man.pos_y - PLAYER_MOVE_SPEED * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
 		return ;
 	viw->man.pos_x = x;
@@ -54,8 +54,8 @@ void	push_a(t_cub3d *viw)
 	double	angle;
 
 	angle = ftoradian(viw->man.angle_h) + M_PI * 3 / 2;
-	x = viw->man.pos_x + 0.05 * sin(angle);
-	y = viw->man.pos_y - 0.05 * cos(angle);
+	x = viw->man.pos_x + PLAYER_MOVE_SPEED * sin(angle);
+	y = viw->man.pos_y - PLAYER_MOVE_SPEED * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
 		return ;
 	viw->man.pos_x = x;
@@ -70,8 +70,8 @@ void	push_s(t_cub3d *viw)
 	double	angle;
 
 	angle = ftoradian(viw->man.angle_h) + M_PI;
-	x = viw->man.pos_x + 0.05 * sin(angle);
-	y = viw->man.pos_y - 0.05 * cos(angle);
+	x = viw->man.pos_x + PLAYER_MOVE_SPEED * sin(angle);
+	y = viw->man.pos_y - PLAYER_MOVE_SPEED * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
 		return ;
 	viw->man.pos_x = x;
@@ -86,8 +86,8 @@ void	push_d(t_cub3d *viw)
 	double	angle;
 
 	angle = ftoradian(viw->man.angle_h) + M_PI / 2;
-	x = viw->man.pos_x + 0.05 * sin(angle);
-	y = viw->man.pos_y - 0.05 * cos(angle);
+	x = viw->man.pos_x + PLAYER_MOVE_SPEED * sin(angle);
+	y = viw->man.pos_y - PLAYER_MOVE_SPEED * cos(angle);
 	if (viw->map[(int)y][(int)x] == OBJECT)
 		return ;
 	viw->man.pos_x = x;
