@@ -16,7 +16,7 @@ int	isargcerror(int ac)
 {
 	if (ac != 2)
 	{
-		printf("Error\nToo many or no arguments.\n");
+		printf("Error\nArgument Error\n");
 		return (1);
 	}
 	return (0);
