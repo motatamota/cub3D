@@ -24,11 +24,7 @@
 
 # define PLAYER_ANGLE_SPEED 20
 # define PLAYER_MOVE_SPEED 0.3
-<<<<<<< HEAD
 # define FOV 90 //視野角
-=======
-# define FOV 90
->>>>>>> refs/remotes/origin/master
 # define X_SIZE 1600
 # define Y_SIZE 900
 # define KEY_W 119
