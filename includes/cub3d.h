@@ -23,7 +23,7 @@
 # include "libft.h"
 
 # define PLAYER_ANGLE_SPEED 20
-# define PLAYER_MOVE_SPEED 0.5
+# define PLAYER_MOVE_SPEED 0.3
 # define FOV 90 //視野角
 # define X_SIZE 1600
 # define Y_SIZE 900

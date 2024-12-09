@@ -31,6 +31,15 @@ void	format_gnl(char *str)
 		*(str - 1) = '\0';
 }
 
+int	first_img_sub(void *param)
+{
+	t_cub3d	*viw;
+
+	viw = (t_cub3d *)param;
+	first_img(viw);
+	return (0);
+}
+
 int	main(int ac, char **av)
 {
 	t_cub3d		viw;
@@ -55,6 +64,7 @@ int	main(int ac, char **av)
 	viw.img.addr = mlx_get_data_addr(viw.img.img, &viw.img.bits_per_pixel,
 			&viw.img.line_length, &viw.img.endian);
 	cub3d(&viw, *(av + 1));
+	mlx_loop_hook(viw.mlx, first_img_sub, (void *)&viw);
 	mlx_loop(viw.mlx);
 	exit(0);
 }
