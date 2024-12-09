@@ -15,16 +15,20 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <math.h>
-// #include <X11/X.h>
-// #include <X11/keysym.h>
-# include <mlx.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
+# include "mlx.h"
 # include <fcntl.h>
 # include "get_next_line.h"
 # include "libft.h"
 
 # define PLAYER_ANGLE_SPEED 20
 # define PLAYER_MOVE_SPEED 0.3
+<<<<<<< HEAD
 # define FOV 90 //視野角
+=======
+# define FOV 90
+>>>>>>> refs/remotes/origin/master
 # define X_SIZE 1600
 # define Y_SIZE 900
 # define KEY_W 119

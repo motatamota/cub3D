@@ -5,12 +5,13 @@ SRC = src/arg_error.c src/calculate.c src/cub3d.c src/file_io.c src/get_next_lin
 OBJ = $(SRC:%.c=%.o)
 INCLUDE = includes
 CC = gcc
-XFLAG = -lmlx_Linux -lXext -lX11 -lm
+XFLAG = -lXext -lX11 -lm
+# XFLAG = -Imlx -lmlx -framework OpenGL -framework AppKit -lm
 
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIB)
-	$(CC) $(FLAG) -I $(INCLUDE) -o $(NAME) $(OBJ) $(LIB) $(XFLAG)
+	$(CC) $(FLAG) -I $(INCLUDE) -o $(NAME) $(OBJ) libmlx_Linux.a $(LIB) $(XFLAG)
 
 $(LIB):
 	make -C libft
